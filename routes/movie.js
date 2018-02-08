@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   queries.movie.update(req.params.id, req.body)
-  .then((movie) => res.send(200))
+  .then((movie) => res.sendStatus(200))
 })
 
 
