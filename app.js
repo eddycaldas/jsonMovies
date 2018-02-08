@@ -4,8 +4,7 @@ const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 8800
 
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded())
-
+app.use(bodyParser.urlencoded({ extended: false }))
 const routes = {
   movie: require('./routes/movie')
 }
