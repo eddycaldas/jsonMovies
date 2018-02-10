@@ -1,24 +1,25 @@
-/* 
+body {
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+nav.navbar.navbar-light.bg-faded {
+    padding: 50px;
+}
+
+.navbar-brand {
+  padding-left: 43%;
+}
+
 #allMovies {
-  display: flex; 
+  padding-top: 30px;
+  padding-left: 18%;
 }
 
-#left {
-  background-color: pink;
-  width: 16%;
-    min-height: 90vh;
+ul.nav.nav-pills {
+    padding-left: 23%;
 }
 
-#right {
-  background-color: yellow;
-  width: 16%;
-    min-height: 90vh;
+h1.navbar-brand.mb-0 {
+    font-size: 350%;
 }
-
-#center {
-  background-color: green;
-  width: 68%;
-    min-height: 90vh;
-} */
-
-

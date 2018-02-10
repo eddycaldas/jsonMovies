@@ -1,15 +1,21 @@
+const movieApi = 'https://jsonmovies.herokuapp.com/movie/'
 
-
-$.get('https://jsonmovies.herokuapp.com/movie/')
+$.get(movieApi)
 .then(function(data){
   for(i=1; i<data.length; i++) {
     var filterGenre = data[i].genres;
+    var showMovies = data[i].title;
+    var movieItem;
     
+    // get movies by genre
     var animation = (/\Animation/g);
     var animationResult = filterGenre.match(animation)
       if(animationResult !== null) {
     var animationList = data[i].title;
-    // console.log(animationList);
+    $('#postAnimation').append(`
+       <tr> 
+         <td>${animationList}</td>
+       </tr>`)
    }
  
  
@@ -17,113 +23,171 @@ $.get('https://jsonmovies.herokuapp.com/movie/')
    var romanceResult = filterGenre.match(romance)
      if(romanceResult !== null) {
    var romanceList = data[i].title;
-   // console.log(romanceList);
+   $('#postRomance').append(`
+      <tr> 
+        <td>${romanceList}</td>
+      </tr>`)
   }
     
     var adventure = (/\Adventure/g);
     var adventureResult = filterGenre.match(adventure)
       if(adventureResult !== null) {
     var adventureList = data[i].title;
-    // console.log(adventureList);
+    $('#postAdventure').append(`
+       <tr> 
+         <td>${adventureList}</td>
+       </tr>`)
    }
      
     var children = (/\Children/g);
     var childrenResult = filterGenre.match(children)
      if(childrenResult !== null) {
     var childrenList = data[i].title;
-    // console.log(childrenList);
+    $('#postChildren').append(`
+       <tr> 
+         <td>${childrenList}</td>
+       </tr>`)
     }
     
     var comedy = (/\Comedy/g);
     var comedyResult = filterGenre.match(comedy)
      if(comedyResult !== null) {
     var comedyList = data[i].title;
-    // console.log(comedyList);
+    $('#postComedy').append(`
+       <tr> 
+         <td>${comedyList}</td>
+       </tr>`)
     }
     
     var fantasy = (/\Fantasy/g);
     var fantasyResult = filterGenre.match(fantasy)
      if(fantasyResult !== null) {
     var fantasyList = data[i].title;
-    // console.log(fantasyList);
+    $('#postFantasy').append(`
+       <tr> 
+         <td>${fantasyList}</td>
+       </tr>`)
     }
     
     var drama = (/\Drama/g);
     var dramaResult = filterGenre.match(drama)
      if(dramaResult !== null) {
     var dramaList = data[i].title;
-    // console.log(dramaList);
+    $('#postDrama').append(`
+        <tr> 
+         <td>${dramaList}</td>
+       </tr>`)
     }
+    
     
     var action = (/\Action/g);
     var actionResult = filterGenre.match(action)
      if(actionResult !== null) {
      var actionList = data[i].title;
-    console.log(actionList);
-    }
+     $('#postAction').append(`
+        <tr> 
+          <td>${actionList}</td>
+        </tr>`)
+         }
     
     var crime = (/\Crime/g);
     var crimeResult = filterGenre.match(crime)
      if(crimeResult !== null) {
     var crimeList = data[i].title;
-    // console.log(crimeList);
+    $('#postCrime').append(`
+       <tr> 
+         <td>${crimeList}</td>
+       </tr>`)
     }
     
     var thriller = (/\Thriller/g);
     var thrillerResult = filterGenre.match(thriller)
      if(thrillerResult !== null) {
     var thrillerList = data[i].title;
-    // console.log(thrillerList);
+    $('#postThriller').append(`
+       <tr> 
+         <td>${thrillerList}</td>
+       </tr>`)
     }
     
     var horror = (/\Horror/g);
     var horrorResult = filterGenre.match(horror)
      if(horrorResult !== null) {
     var horrorList = data[i].title;
-    // console.log(horrorList);
+    $('#postHorror').append(`
+       <tr> 
+         <td>${horrorList}</td>
+       </tr>`)
     }
     
     var sciFi = (/\Sci-Fi/g);
     var sciFiResult = filterGenre.match(sciFi)
      if(sciFiResult !== null) {
     var sciFiList = data[i].title;
-    // console.log(sciFiList);
+    $('#postScifi').append(`
+       <tr> 
+         <td>${sciFiList}</td>
+       </tr>`)
     }
     
     var mistery = (/\Mistery/g);
     var misteryResult = filterGenre.match(mistery)
      if(misteryResult !== null) {
     var misteryList = data[i].title;
-    // console.log(misteryList);
+    $('#postMistery').append(`
+       <tr> 
+         <td>${misteryList}</td>
+       </tr>`)
     }
     
     var documentary = (/\Documentary/g);
     var documentaryResult = filterGenre.match(documentary)
      if(documentaryResult !== null) {
     var documentaryList = data[i].title;
-    // console.log(documentaryList);
+    $('#postDocumentary').append(`
+       <tr> 
+         <td>${documentaryList}</td>
+       </tr>`)
     }
     
     var imax = (/\IMAX/g);
     var imaxResult = filterGenre.match(imax)
      if(imaxResult !== null) {
     var imaxList = data[i].title;
-    // console.log(imaxList);
+    $('#postImax').append(`
+       <tr> 
+         <td>${imaxList}</td>
+       </tr>`)
     }
     
     var war = (/\War/g);
     var warResult = filterGenre.match(war)
      if(warResult !== null) {
     var warList = data[i].title;
-    // console.log(warList);
+    $('#postWar').append(`
+       <tr> 
+         <td>${warList}</td>
+       </tr>`)
     }
     
     var musical = (/\Musical/g);
     var musicalResult = filterGenre.match(musical)
      if(musicalResult !== null) {
     var musicalList = data[i].title;
-    // console.log(musicalList);
+    $('#postMusical').append(`
+       <tr> 
+         <td>${musicalList}</td>
+       </tr>`)
     }
-  
+    
+    // get all movies
+    $('#list').append(`
+       <tr> 
+         <td>${showMovies}</td>
+       </tr>`)
+
 }  
+
 })
+
+
