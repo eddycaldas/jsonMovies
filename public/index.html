@@ -1,18 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
 
-    <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-    <script src='app.js'></script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-light bg-faded">
+    <h1 class="navbar-brand mb-0">Movies</h1>
+  </nav>
+
+<main id='allMovies'>
+  <!-- 
+  <div id='left'></div>
+  <div id='center'>
+    
+  </div>
+  <div id='right'></div> -->
+  
+  <ul class="nav nav-pills">
+  <li class="nav-item dropdown">
+    <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">genre</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" id='action'href="#">Action</a><div id='postAction'></div>
+      <a class="dropdown-item" href="#">Adventure</a>
+      <a class="dropdown-item" href="#">Animation</a>
+      <a class="dropdown-item" href="#">Children</a>
+      <a class="dropdown-item" href="#">Comedy</a>
+      <a class="dropdown-item" href="#">Crime</a>
+      <a class="dropdown-item" href="#">Documentary</a>
+      <a class="dropdown-item" href="#">Drama</a>
+      <a class="dropdown-item" href="#">Fantasy</a>
+      <a class="dropdown-item" href="#">Horror</a>
+      <a class="dropdown-item" href="#">IMAX</a>
+      <a class="dropdown-item" href="#">Musical</a>
+      <a class="dropdown-item" href="#">Mystery</a>
+      <a class="dropdown-item" href="#">Romance</a>
+      <a class="dropdown-item" href="#">Sci-Fi</a>
+      <a class="dropdown-item" href="#">Thriller</a>
+      <a class="dropdown-item" href="#">War</a>
+      <!-- <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a> -->
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+  
+  
+  
+  
+  
+  
+</main>
+
+  <!-- jQuery first, then Tether, then Bootstrap JS. -->
+  <script
+    src="http://code.jquery.com/jquery-2.2.4.js"
+    integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+    crossorigin="anonymous"></script>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <script src='app.js'></script>
+</body>
+
 </html>
