@@ -186,8 +186,33 @@ $.get(movieApi)
          <td>${showMovies}</td>
        </tr>`)
 
-}  
-
+  }   
 })
 
+$(() => {
+$('form').submit((event) => {
+  event.preventDefault();
+  const title = $('#movieTitle').val();
+  const genres = $('#movieGenre').val();
+  const newMovie = {
+    title,
+    genres
+  };
+  $.post(movieApi, newMovie)
+ })
+})
+
+
+$(document).ready(function() {
+  $("#btnSubmit").click(function() {
+    $('#myAlert').show('fade')
+    
+    setTimeout(function() {
+      $("#myAlert").hide('fade');
+    }, 2000);
+  });
+  $("#linkClose").click(function() {
+    $("#myAlert").hide('fade')
+  });
+});
 

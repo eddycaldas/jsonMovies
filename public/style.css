@@ -23,3 +23,7 @@ ul.nav.nav-pills {
 h1.navbar-brand.mb-0 {
     font-size: 350%;
 }
+
+.form-row {
+    padding-left: 23%;
+}
