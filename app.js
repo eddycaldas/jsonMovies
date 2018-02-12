@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 8800;
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors());
+app.use(express.static('public'))
 
 const routes = {
   movie: require('./routes/movie')

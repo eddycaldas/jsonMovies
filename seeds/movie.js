@@ -5,11 +5,7 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('movie').insert([
-        {
-          "movie_id": "",
-          "title": "",
-          "genres": ""
-        },
+
         {
           "movie_id": 1,
           "title": "Toy Story (1995)",

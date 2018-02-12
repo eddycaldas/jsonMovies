@@ -1,13 +1,15 @@
 const movieApi = 'https://jsonmovies.herokuapp.com/movie/'
 
+$(document).ready(function() {
 $.get(movieApi)
 .then(function(data){
   for(i=1; i<data.length; i++) {
     var filterGenre = data[i].genres;
+    var showMovieId = data[i].movie_id;
     var showMovies = data[i].title;
     var movieItem;
     
-    // get movies by genre
+    // get movies by genre------------------------------->
     var animation = (/\Animation/g);
     var animationResult = filterGenre.match(animation)
       if(animationResult !== null) {
@@ -179,16 +181,82 @@ $.get(movieApi)
          <td>${musicalList}</td>
        </tr>`)
     }
-    
-    // get all movies
-    $('#list').append(`
-       <tr> 
-         <td>${showMovies}</td>
-       </tr>`)
-
   }   
+
+})
 })
 
+// get all movies---------------------------------->
+$(document).ready(function() {
+  $.get(movieApi)
+  .then(showMovie)
+});
+var $movieItem;
+function showMovie(data) {
+  data.forEach(function(items) {
+    $movieItem = $(`
+      <tr>
+        <td>${items.movie_id}</td>
+        <td>${items.title}</td>
+        <td><button data-id='${items.id}' class='edit'>Edit Movie</button></td>
+      </tr>
+    `)
+    $movieItem.attr('data-movie_id', items.movie_id)
+    $movieItem.attr('data-genres', items.genres)
+    $('#list').append($movieItem)
+  })
+}
+$(document).on('click', '.edit', editMovie)
+function editMovie(event) {
+  console.log(event);
+  const id = event.target.dataset.id;
+  window.location = `edit.html?id=${id}`
+}
+
+
+// edit
+document.getElementById("editMovieId").disabled = true;
+function getIdFromQuery() {
+  const parsedParts = window.location.search.split('=');
+  const id = parsedParts[1];
+  return id;
+}
+
+function getOne(id) {
+  return $.get(`${movieApi}/${id}`)
+}
+
+$(() => {
+  const id = getIdFromQuery();
+  getOne(id)
+    .then(newMovie => {
+      console.log(newMovie);
+      $('#editMovieId').val(newMovie.movie_id);
+      $('#editMovieTitle').val(newMovie.title)
+      $('#editMovieGenre').val(newMovie.genres);
+      $('#btnEditSubmit').attr('href', `index.html?id=${newMovie.id}`)
+      $('#btnEditSubmit').click((event) => {
+        event.preventDefault();
+        $.ajax({
+          type: 'PUT',
+          dataType: 'json',
+          url: `${movieApi}/${id}`,
+          data: {
+            title: $('#editMovieTitle').val(),
+            genres: $('#editMovieGenre').val()
+          }
+        }).then(result => {
+          window.location = `index.html?id=${id}`;
+        })
+      })
+
+
+    })
+
+
+})
+
+// post movie----------------------------------------->
 $(() => {
 $('form').submit((event) => {
   event.preventDefault();
@@ -202,11 +270,10 @@ $('form').submit((event) => {
  })
 })
 
-
+// alert message after post, edit
 $(document).ready(function() {
   $("#btnSubmit").click(function() {
     $('#myAlert').show('fade')
-    
     setTimeout(function() {
       $("#myAlert").hide('fade');
     }, 2000);

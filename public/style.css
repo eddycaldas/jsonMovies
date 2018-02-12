@@ -27,3 +27,7 @@ h1.navbar-brand.mb-0 {
 .form-row {
     padding-left: 23%;
 }
+
+#tdSeparater {
+  padding-right: 10px;
+}

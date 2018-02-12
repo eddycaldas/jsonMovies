@@ -7,3 +7,4 @@
 * Create main page: populating all movies and by genre.
 * Working on CRUD: Create with alert message.
 * working on CRUD: Read all movies and display on screen.
+* Working on CRUD: Update movies files.
