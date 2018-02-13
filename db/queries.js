@@ -7,7 +7,7 @@ module.exports = {
       return knex('movie')
     },
     delete(id) {
-      return knex('movie').where({id}).delete()
+      return knex('movie').where({id}).del()
     },
     read(id) {
       return knex('movie').where({id}).first()

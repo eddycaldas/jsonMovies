@@ -1,5 +1,4 @@
 const movieApi = 'https://jsonmovies.herokuapp.com/movie/'
-
 $(document).ready(function() {
 $.get(movieApi)
 .then(function(data){
@@ -8,7 +7,6 @@ $.get(movieApi)
     var showMovieId = data[i].movie_id;
     var showMovies = data[i].title;
     var movieItem;
-    
     // get movies by genre------------------------------->
     var animation = (/\Animation/g);
     var animationResult = filterGenre.match(animation)
@@ -19,8 +17,6 @@ $.get(movieApi)
          <td>${animationList}</td>
        </tr>`)
    }
- 
- 
    var romance = (/\Romance/g);
    var romanceResult = filterGenre.match(romance)
      if(romanceResult !== null) {
@@ -29,8 +25,7 @@ $.get(movieApi)
       <tr> 
         <td>${romanceList}</td>
       </tr>`)
-  }
-    
+  }  
     var adventure = (/\Adventure/g);
     var adventureResult = filterGenre.match(adventure)
       if(adventureResult !== null) {
@@ -39,8 +34,7 @@ $.get(movieApi)
        <tr> 
          <td>${adventureList}</td>
        </tr>`)
-   }
-     
+   }   
     var children = (/\Children/g);
     var childrenResult = filterGenre.match(children)
      if(childrenResult !== null) {
@@ -49,8 +43,7 @@ $.get(movieApi)
        <tr> 
          <td>${childrenList}</td>
        </tr>`)
-    }
-    
+    }  
     var comedy = (/\Comedy/g);
     var comedyResult = filterGenre.match(comedy)
      if(comedyResult !== null) {
@@ -59,8 +52,7 @@ $.get(movieApi)
        <tr> 
          <td>${comedyList}</td>
        </tr>`)
-    }
-    
+    }  
     var fantasy = (/\Fantasy/g);
     var fantasyResult = filterGenre.match(fantasy)
      if(fantasyResult !== null) {
@@ -70,7 +62,6 @@ $.get(movieApi)
          <td>${fantasyList}</td>
        </tr>`)
     }
-    
     var drama = (/\Drama/g);
     var dramaResult = filterGenre.match(drama)
      if(dramaResult !== null) {
@@ -79,9 +70,7 @@ $.get(movieApi)
         <tr> 
          <td>${dramaList}</td>
        </tr>`)
-    }
-    
-    
+    }  
     var action = (/\Action/g);
     var actionResult = filterGenre.match(action)
      if(actionResult !== null) {
@@ -90,8 +79,7 @@ $.get(movieApi)
         <tr> 
           <td>${actionList}</td>
         </tr>`)
-         }
-    
+         }    
     var crime = (/\Crime/g);
     var crimeResult = filterGenre.match(crime)
      if(crimeResult !== null) {
@@ -100,8 +88,7 @@ $.get(movieApi)
        <tr> 
          <td>${crimeList}</td>
        </tr>`)
-    }
-    
+    }  
     var thriller = (/\Thriller/g);
     var thrillerResult = filterGenre.match(thriller)
      if(thrillerResult !== null) {
@@ -111,7 +98,6 @@ $.get(movieApi)
          <td>${thrillerList}</td>
        </tr>`)
     }
-    
     var horror = (/\Horror/g);
     var horrorResult = filterGenre.match(horror)
      if(horrorResult !== null) {
@@ -132,13 +118,13 @@ $.get(movieApi)
        </tr>`)
     }
     
-    var mistery = (/\Mistery/g);
-    var misteryResult = filterGenre.match(mistery)
-     if(misteryResult !== null) {
-    var misteryList = data[i].title;
-    $('#postMistery').append(`
+    var mystery = (/\Mystery/g);
+    var mysteryResult = filterGenre.match(mystery)
+     if(mysteryResult !== null) {
+    var mysteryList = data[i].title;
+    $('#postMystery').append(`
        <tr> 
-         <td>${misteryList}</td>
+         <td>${mysteryList}</td>
        </tr>`)
     }
     
@@ -185,61 +171,52 @@ $.get(movieApi)
 
 })
 })
-
 // get all movies---------------------------------->
 $(document).ready(function() {
   $.get(movieApi)
   .then(showMovie)
 });
-
 var $movieItem;
 function showMovie(data) {
   data.forEach(function(items) {
     $movieItem = $(`
-      <tr>
-        <td>${items.title}</td>
-        <td><button data-id='${items.id}' class='edit'>&#9998;</button></td>
-        <td><button data-id="${items.id}" class="delete-movie">X</button></td>
-      </tr>
-    `)
-    $movieItem.attr('data-genres', items.genres)
+                    <tr>
+                      <td>${items.title}</td>
+                      <td><button data-id='${items.id}' class='edit'>&#9998;</button></td>
+                      <td><button data-id='${items.id}' class='delete-movie'>X</button></td>
+                    </tr>
+                  `)
+    $movieItem.attr('data-title', items.title)
     $('#list').append($movieItem)
   })
 }
-$(document).on('click', '.edit', editMovie)
-$(document).on('click', 'delete-movie', deleteMovie)
+$(document).on('click', '.edit', editMovie);
+$(document).on('click', '.delete-movie', deleteMovie);
 
 function editMovie(event) {
   const id = event.target.dataset.id;
   window.location = `edit.html?id=${id}`
 }
-
 // delete movies---------------------------------->
 function deleteMovie(event) {
   const id = event.target.dataset.id;
-  console.log(id);
   $.ajax({
     type: 'DELETE',
     dataType: 'json',
-    url: `${movieApi}/${id}`,
+    url: `${movieApi}/${id}`,  
   }).then(result => {
-    console.log(result);
-    window.location = `index.html?id=${id}`
+    window.location = `index.html?id=${id}`;
   });
 }
-
-
 // edit----------------------------------------->
 function getIdFromQuery() {
   const parsedParts = window.location.search.split('=');
   const id = parsedParts[1];
   return id;
 }
-
 function getOne(id) {
   return $.get(`${movieApi}/${id}`)
 }
-
 $(() => {
   const id = getIdFromQuery();
   getOne(id)
@@ -263,8 +240,7 @@ $(() => {
       })
     })
   })
-
-
+// alert after movie edit
   $(document).ready(function() {
     $("#btnEditSubmit").click(function() {
       $('#myAlert').show('fade')
@@ -289,8 +265,7 @@ $('form').submit((event) => {
   $.post(movieApi, newMovie)
  })
 })
-
-// alert message after post, edit
+// alert message after post
 $(document).ready(function() {
   $("#btnSubmit").click(function() {
     $('#myAlert').show('fade')

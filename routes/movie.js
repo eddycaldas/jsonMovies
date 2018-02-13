@@ -10,7 +10,9 @@ router.get('/', (req, res) => {
 router.delete('/:id', (req, res) => {
   queries.movie
   .delete(req.params.id)
-  .then(() => res.sendStatus(202))
+  .then(() => res.json({
+    deleted: true
+  }))
 })
 
 router.get('/:id', (req, res) => {
@@ -27,8 +29,5 @@ router.put('/:id', (req, res) => {
   queries.movie.update(req.params.id, req.body)
   .then((movie) => res.sendStatus(200))
 })
-
-
-
 
 module.exports = router;
