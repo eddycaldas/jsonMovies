@@ -11,7 +11,7 @@ router.delete('/:id', (req, res) => {
   queries.movie
   .delete(req.params.id)
   .then(() => res.json({
-    deleted: true
+    deleted: true 
   }))
 })
 
