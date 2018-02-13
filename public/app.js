@@ -191,31 +191,45 @@ $(document).ready(function() {
   $.get(movieApi)
   .then(showMovie)
 });
+
 var $movieItem;
 function showMovie(data) {
   data.forEach(function(items) {
     $movieItem = $(`
       <tr>
-        <td>${items.movie_id}</td>
         <td>${items.title}</td>
-        <td><button data-id='${items.id}' class='edit'>Edit Movie</button></td>
+        <td><button data-id='${items.id}' class='edit'>&#9998;</button></td>
+        <td><button data-id="${items.id}" class="delete-movie">X</button></td>
       </tr>
     `)
-    $movieItem.attr('data-movie_id', items.movie_id)
     $movieItem.attr('data-genres', items.genres)
     $('#list').append($movieItem)
   })
 }
 $(document).on('click', '.edit', editMovie)
+$(document).on('click', 'delete-movie', deleteMovie)
+
 function editMovie(event) {
-  console.log(event);
   const id = event.target.dataset.id;
   window.location = `edit.html?id=${id}`
 }
 
+// delete movies---------------------------------->
+function deleteMovie(event) {
+  const id = event.target.dataset.id;
+  console.log(id);
+  $.ajax({
+    type: 'DELETE',
+    dataType: 'json',
+    url: `${movieApi}/${id}`,
+  }).then(result => {
+    console.log(result);
+    window.location = `index.html?id=${id}`
+  });
+}
 
-// edit
-document.getElementById("editMovieId").disabled = true;
+
+// edit----------------------------------------->
 function getIdFromQuery() {
   const parsedParts = window.location.search.split('=');
   const id = parsedParts[1];
@@ -230,8 +244,6 @@ $(() => {
   const id = getIdFromQuery();
   getOne(id)
     .then(newMovie => {
-      console.log(newMovie);
-      $('#editMovieId').val(newMovie.movie_id);
       $('#editMovieTitle').val(newMovie.title)
       $('#editMovieGenre').val(newMovie.genres);
       $('#btnEditSubmit').attr('href', `index.html?id=${newMovie.id}`)
@@ -249,13 +261,21 @@ $(() => {
           window.location = `index.html?id=${id}`;
         })
       })
-
-
     })
+  })
 
 
-})
-
+  $(document).ready(function() {
+    $("#btnEditSubmit").click(function() {
+      $('#myAlert').show('fade')
+      setTimeout(function() {
+        $("#myAlert").hide('fade');
+      }, 2000);
+    });
+    $("#linkClose").click(function() {
+      $("#myAlert").hide('fade')
+    });
+  });
 // post movie----------------------------------------->
 $(() => {
 $('form').submit((event) => {
@@ -282,4 +302,5 @@ $(document).ready(function() {
     $("#myAlert").hide('fade')
   });
 });
+
 

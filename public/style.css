@@ -28,6 +28,12 @@ h1.navbar-brand.mb-0 {
     padding-left: 23%;
 }
 
-#tdSeparater {
-  padding-right: 10px;
+button.edit {
+    margin: 3px;
+    color: mediumblue;
+}
+
+button.delete-movie {
+    margin: 3px;
+    color: indianred;
 }
