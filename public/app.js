@@ -205,7 +205,7 @@ function deleteMovie(event) {
     dataType: 'json',
     url: `${movieApi}/${id}`,  
   }).then(result => {
-    window.location = `index.html?id=${id}`;
+    window.location = `erase.html?id=${id}`;
   });
 }
 // edit----------------------------------------->
